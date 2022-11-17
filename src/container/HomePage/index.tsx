@@ -36,23 +36,10 @@ export default function HomePage() {
   return (
     <Styled.Container>
       <Container height={'full'}>
-        <h1>{'Olá mundo'}</h1>
+        {products.map((item) => {
+          return <p key={item.brand}>{item.brand}</p>;
+        })}
       </Container>
     </Styled.Container>
   );
-}
-
-{
-  /*
-  async function handleSubmitFeedback(event: FormEvent) {
-        event.preventDefault();
-        setIsSendingFeedback(true);
-        await api.post('//getProducts', {
-            type: feedbackType,
-            comment,
-            screenshot,
-        })
-        onFeedbackSent()
-    }
-  */
 }
