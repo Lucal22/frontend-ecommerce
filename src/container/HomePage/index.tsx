@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Container from '../../components/Container';
+import Header from '../../components/Header';
 import { api } from '../../lib/api';
 import { Data, Products } from '../../type/products';
 import * as Styled from './styles';
@@ -35,7 +36,9 @@ export default function HomePage() {
 
   return (
     <Styled.Container>
+      <Header number={0} />
       <Container height={'full'}>
+        <h1>Teste</h1>
         {products.map((item) => {
           return <p key={item.brand}>{item.brand}</p>;
         })}

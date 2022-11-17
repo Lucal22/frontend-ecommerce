@@ -1,16 +1,18 @@
-import { useState } from 'react';
 import * as Styled from './styles';
 import { ShoppingCart } from 'phosphor-react';
 
-export default function CartButton() {
-  const [item, setItem] = useState(true);
+type CartButtonProps = {
+  number: number;
+};
+
+export default function CartButton({ number }: CartButtonProps) {
   return (
     <Styled.Cart>
       <Styled.CartSvg>
         <ShoppingCart size={32} />
-        {item ? (
+        {number >= 1 ? (
           <Styled.CartCount>
-            <p>10</p>
+            <p>{number}</p>
           </Styled.CartCount>
         ) : null}
       </Styled.CartSvg>

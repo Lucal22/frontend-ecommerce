@@ -8,17 +8,17 @@ import Nav from '../Nav';
 import * as Styled from './styles';
 
 export type HeaderProps = {
-  children: React.ReactNode;
+  number: number;
 };
 
-export default function Header() {
+export default function Header({ number }: HeaderProps) {
   return (
     <Styled.Header>
       <Container height={'100'}>
         <Logo />
         <Nav />
         <Menu />
-        <CartButton />
+        <CartButton number={number} />
       </Container>
     </Styled.Header>
   );
