@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.blueColor};
+export const Content = styled.div`
+  ${() => css`
+    padding: 30rem 10rem 0 10rem;
   `}
 `;

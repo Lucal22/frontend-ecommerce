@@ -9,9 +9,10 @@ export default function Container({
   children,
   background,
   height,
+  display,
 }: ContainerProps) {
   return (
-    <Styled.Container height={height} background={background}>
+    <Styled.Container display={display} height={height} background={background}>
       {children}
     </Styled.Container>
   );

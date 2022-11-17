@@ -35,14 +35,16 @@ export default function HomePage() {
   console.log(products[0].brand);
 
   return (
-    <Styled.Container>
+    <>
       <Header number={0} />
-      <Container height={'full'}>
-        <h1>Teste</h1>
-        {products.map((item) => {
-          return <p key={item.brand}>{item.brand}</p>;
-        })}
+      <Container display="block" height={'full'}>
+        <Styled.Content>
+          <h1>Teste</h1>
+          {products.map((item) => {
+            return <p key={item.brand}>{item.brand}</p>;
+          })}
+        </Styled.Content>
       </Container>
-    </Styled.Container>
+    </>
   );
 }

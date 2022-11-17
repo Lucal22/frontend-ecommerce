@@ -3,6 +3,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 export type ContainerStyleProps = {
   background?: 'white' | 'gray';
   height: 'full' | '100';
+  display?: 'flex' | 'block';
 };
 
 const backGround = {
@@ -16,8 +17,19 @@ const backGround = {
   `,
 };
 
+const displayStyle = {
+  flex: () => css`
+    display: flex;
+    align-items: center;
+    position: relative; ;
+  `,
+  block: () => css`
+    display: block;
+  `,
+};
+
 export const Container = styled.div<ContainerStyleProps>`
-  ${({ theme, background, height }) => css`
+  ${({ theme, background, height, display }) => css`
     display: flex;
     align-items: center;
     position: relative;
@@ -35,5 +47,6 @@ export const Container = styled.div<ContainerStyleProps>`
       width: ${theme.screen.size.large};
     }
     ${background ? backGround[background](theme) : null}
+    ${display ? displayStyle[display]() : null}
   `}
 `;
