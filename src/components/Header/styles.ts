@@ -13,3 +13,11 @@ export const Header = styled.header`
     box-shadow: 0px 4px 3px -2px rgba(0, 0, 0, 0.75);
   `}
 `;
+
+export const Icons = styled.div`
+  position: absolute;
+  top: 30%;
+  right: -1%;
+  display: flex;
+  gap: 2rem;
+`;

@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Card from '../../components/Card';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import { api } from '../../lib/api';
 import { Data, Products } from '../../type/products';
+import productSample from './example';
 import * as Styled from './styles';
 
 export default function HomePage() {
-  const [products, setProducts] = useState<Data>([
-    {
+  const [products, setProducts] = useState(
+    /*<Data>*/ productSample,
+    /*[
+   /* {
       name: '',
       brand: '',
       category: '',
@@ -18,9 +22,10 @@ export default function HomePage() {
       price: '',
       qtd: 0,
     },
-  ]);
+  ]*/
+  );
 
-  useEffect(() => {
+  /*  useEffect(() => {
     async function getProducts() {
       try {
         const productsData: Products = await axios.get(`${api}/getProducts`);
@@ -30,19 +35,29 @@ export default function HomePage() {
       }
     }
     getProducts();
-  }, []);
+  }, []); */
 
   console.log(products[0].brand);
 
   return (
     <>
-      <Header number={0} />
+      <Header number={1} />
       <Container display="block" height={'full'}>
         <Styled.Content>
-          <h1>Teste</h1>
-          {products.map((item) => {
-            return <p key={item.brand}>{item.brand}</p>;
-          })}
+          <Styled.Grid>
+            {products.map((item) => {
+              return (
+                <Card
+                  key={item.id}
+                  name={item.name}
+                  src={item.image}
+                  alt={item.description}
+                  description={item.description}
+                  price={item.price}
+                />
+              );
+            })}
+          </Styled.Grid>
         </Styled.Content>
       </Container>
     </>

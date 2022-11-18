@@ -26,6 +26,7 @@ export const theme = {
     },
 
     size: {
+      xSmall: '1.2rem',
       small: '1.6rem',
       medium: '1.8rem',
       big: '2.4rem',
@@ -46,7 +47,7 @@ export const theme = {
   },
   background: {
     white: '#ffffff',
-    gray: '#6b7688',
+    gray: '#EAEDED',
     blueColor: '#2430af',
     transparent: 'rgba(255, 255, 255, 0.25)',
   },

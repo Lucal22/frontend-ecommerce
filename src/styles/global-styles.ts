@@ -15,6 +15,7 @@ ${({ theme }) => css`
 
   body {
     font-family: ${theme.fonts.style.defaultFont};
+    background-color: ${theme.background.gray};
   }
 
   a {
