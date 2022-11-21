@@ -13,4 +13,9 @@ export type Products = {
   data: [Product];
 };
 
+export type Event =
+  | any
+  | React.ChangeEvent<HTMLButtonElement>
+  | React.MouseEvent<HTMLButtonElement, MouseEvent>;
+
 export type Data = [Product];

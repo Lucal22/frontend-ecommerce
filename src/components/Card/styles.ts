@@ -1,4 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
+
+export type CardStylesProps = {
+  Added: boolean;
+};
 
 export const Container = styled.div`
   width: 100%;
@@ -110,8 +114,15 @@ export const Price = styled.p`
   `}
 `;
 
-export const Button = styled.button`
-  ${({ theme }) => css`
+const ButtonStyles = {
+  added: (theme: DefaultTheme) => css`
+    background-color: ${theme.background.lightBlueColor};
+    cursor: default;
+  `,
+};
+
+export const Button = styled.button<CardStylesProps>`
+  ${({ theme, Added }) => css`
     position: absolute;
     left: 0;
     bottom: 0;
@@ -122,5 +133,6 @@ export const Button = styled.button`
     svg {
       color: white;
     }
+    ${Added ? ButtonStyles['added'](theme) : null}
   `}
 `;

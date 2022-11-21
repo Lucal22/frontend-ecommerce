@@ -4,11 +4,13 @@ import Card from '../../components/Card';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import { api } from '../../lib/api';
-import { Data, Products } from '../../type/products';
+import { Data, Event, Products } from '../../type/products';
 import productSample from './example';
 import * as Styled from './styles';
 
 export default function HomePage() {
+  const [selected, setSelected] = useState(['']);
+  const [count, setCount] = useState(0);
   const [products, setProducts] = useState(
     /*<Data>*/ productSample,
     /*[
@@ -37,11 +39,17 @@ export default function HomePage() {
     getProducts();
   }, []); */
 
-  console.log(products[0].brand);
+  function handleClick(event: Event) {
+    setCount(count + 1);
+    setSelected((prevProduct) => {
+      return [...prevProduct, event.target.value];
+    });
+    event.preventDefault();
+  }
 
   return (
     <>
-      <Header number={1} />
+      <Header number={count} />
       <Container display="block" height={'full'}>
         <Styled.Content>
           <Styled.Grid>
@@ -49,11 +57,13 @@ export default function HomePage() {
               return (
                 <Card
                   key={item.id}
+                  value={item.id}
                   name={item.name}
                   src={item.image}
                   alt={item.description}
                   description={item.description}
                   price={item.price}
+                  onClick={handleClick}
                 />
               );
             })}

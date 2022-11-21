@@ -50,5 +50,6 @@ export const theme = {
     gray: '#EAEDED',
     blueColor: '#2430af',
     transparent: 'rgba(255, 255, 255, 0.25)',
+    lightBlueColor: '#6c76e0',
   },
 };

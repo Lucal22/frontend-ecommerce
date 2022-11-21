@@ -1,5 +1,6 @@
 import { ShoppingCart } from 'phosphor-react';
-import React from 'react';
+import { useState } from 'react';
+import { Event } from '../../type/products';
 import * as Styled from './styles';
 
 export type CardProps = {
@@ -8,6 +9,8 @@ export type CardProps = {
   name: string;
   description: string;
   price: string;
+  value: number;
+  onClick: (event: Event) => void;
 };
 
 export default function Card({
@@ -16,7 +19,10 @@ export default function Card({
   name,
   description,
   price,
+  value,
+  onClick,
 }: CardProps) {
+  const [added, setAdded] = useState(false);
   return (
     <Styled.Container>
       <Styled.Product>
@@ -28,7 +34,16 @@ export default function Card({
             <Styled.Name>{name}</Styled.Name>
             <Styled.Description>{description}</Styled.Description>
             <Styled.Price>R${price}</Styled.Price>
-            <Styled.Button>
+            <Styled.Button
+              Added={added}
+              disabled={added}
+              value={value}
+              aria-label="Envia produto"
+              onClick={(event) => {
+                onClick(event);
+                setAdded(true);
+              }}
+            >
               <ShoppingCart size={32} />
             </Styled.Button>
           </Styled.Info>
