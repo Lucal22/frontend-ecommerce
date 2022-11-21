@@ -8,8 +8,12 @@ import { Data, Event, Products } from '../../type/products';
 import productSample from './example';
 import * as Styled from './styles';
 
-export default function HomePage() {
-  const [selected, setSelected] = useState(['']);
+export type HomePageProps = {
+  onAdd: (arg: string) => void;
+};
+
+export default function HomePage({ onAdd }: HomePageProps) {
+  const [selected, setSelected] = useState([]);
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState(
     /*<Data>*/ productSample,
@@ -41,9 +45,7 @@ export default function HomePage() {
 
   function handleClick(event: Event) {
     setCount(count + 1);
-    setSelected((prevProduct) => {
-      return [...prevProduct, event.target.value];
-    });
+    onAdd(event.target.value[0]);
     event.preventDefault();
   }
 
