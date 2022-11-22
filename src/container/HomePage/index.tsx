@@ -52,27 +52,25 @@ export default function HomePage({ onAdd, onCount }: HomePageProps) {
   }
 
   return (
-    <>
-      <Container display="block" height={'full'}>
-        <Styled.Content>
-          <Styled.Grid>
-            {products.map((item) => {
-              return (
-                <Card
-                  key={item.id}
-                  value={item.id}
-                  name={item.name}
-                  src={item.image}
-                  alt={item.description}
-                  description={item.description}
-                  price={item.price}
-                  onClick={handleClick}
-                />
-              );
-            })}
-          </Styled.Grid>
-        </Styled.Content>
-      </Container>
-    </>
+    <Container display="block" height={'full'}>
+      <Styled.Content>
+        <Styled.Grid>
+          {products.map((item) => {
+            return (
+              <Card
+                key={item.id}
+                value={item.id}
+                name={item.name}
+                src={item.image}
+                alt={item.description}
+                description={item.description}
+                price={item.price}
+                onClick={handleClick}
+              />
+            );
+          })}
+        </Styled.Grid>
+      </Styled.Content>
+    </Container>
   );
 }

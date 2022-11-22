@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Content = styled.div`
   ${({ theme }) => css`
-    color: red;
+    padding-top: 15rem;
+    @media (min-width: ${theme.screen.size.medium}) {
+      padding-top: 20rem;
+    }
   `}
 `;
