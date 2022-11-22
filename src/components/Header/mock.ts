@@ -7,9 +7,9 @@ const list = [
   },
   {
     id: 2,
-    name: 'PRODUTOS',
+    name: 'CARRINHO',
     target: false,
-    path: 'products',
+    path: 'cart',
   },
   {
     id: 3,

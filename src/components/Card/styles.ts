@@ -34,7 +34,7 @@ export const Card = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: 16.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -57,7 +57,10 @@ export const Img = styled.div`
       max-width: 30rem;
       height: 10rem;
       @media (min-width: ${theme.screen.size.medium}) {
-        height: 20rem;
+        height: 10rem;
+      }
+      @media (min-width: ${theme.screen.size.large}) {
+        height: 15rem;
       }
     }
   `}
@@ -65,6 +68,8 @@ export const Img = styled.div`
 
 export const Info = styled.div`
   ${({ theme }) => css`
+    position: relative;
+    height: 50%;
     font-size: ${theme.fonts.size.xSmall};
   `}
 `;
@@ -91,7 +96,6 @@ export const Description = styled.p`
 
     @media (min-width: ${theme.screen.size.medium}) {
       display: block;
-      text-align: justify;
     }
     @media (min-width: ${theme.screen.size.large}) {
       font-size: ${theme.fonts.size.small};
@@ -101,11 +105,14 @@ export const Description = styled.p`
 
 export const Price = styled.p`
   ${({ theme }) => css`
-    padding-top: 1.5rem;
+    padding-top: 1.2rem;
     text-align: end;
 
     @media (min-width: ${theme.screen.size.medium}) {
       padding-top: 3rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
       font-size: ${theme.fonts.size.small};
     }
     @media (min-width: ${theme.screen.size.large}) {

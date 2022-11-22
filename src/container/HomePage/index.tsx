@@ -2,36 +2,34 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import Container from '../../components/Container';
-import Header from '../../components/Header';
 import { api } from '../../lib/api';
 import { Data, Event, Products } from '../../type/products';
-import productSample from './example';
 import * as Styled from './styles';
 
 export type HomePageProps = {
-  onAdd: (arg: string) => void;
+  onAdd: (arg: number) => void;
+  onCount: () => void;
 };
 
-export default function HomePage({ onAdd }: HomePageProps) {
-  const [selected, setSelected] = useState([]);
-  const [count, setCount] = useState(0);
-  const [products, setProducts] = useState(
-    /*<Data>*/ productSample,
-    /*[
-   /* {
-      name: '',
-      brand: '',
-      category: '',
-      type: '',
-      description: '',
-      image: '',
-      price: '',
-      qtd: 0,
-    },
-  ]*/
+export default function HomePage({ onAdd, onCount }: HomePageProps) {
+  const [products, setProducts] = useState<Data>(
+    /*productSample,*/
+    [
+      {
+        id: 0,
+        name: '',
+        brand: '',
+        category: '',
+        type: '',
+        description: '',
+        image: '',
+        price: '',
+        qtd: 0,
+      },
+    ],
   );
 
-  /*  useEffect(() => {
+  useEffect(() => {
     async function getProducts() {
       try {
         const productsData: Products = await axios.get(`${api}/getProducts`);
@@ -41,17 +39,20 @@ export default function HomePage({ onAdd }: HomePageProps) {
       }
     }
     getProducts();
-  }, []); */
+  }, []);
 
   function handleClick(event: Event) {
-    setCount(count + 1);
-    onAdd(event.target.value[0]);
-    event.preventDefault();
+    if (event.target.value[0] === undefined) {
+      return;
+    } else {
+      onAdd(event.target.value);
+      onCount();
+      event.preventDefault();
+    }
   }
 
   return (
     <>
-      <Header number={count} />
       <Container display="block" height={'full'}>
         <Styled.Content>
           <Styled.Grid>

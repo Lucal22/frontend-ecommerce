@@ -34,19 +34,19 @@ export default function Card({
             <Styled.Name>{name}</Styled.Name>
             <Styled.Description>{description}</Styled.Description>
             <Styled.Price>R${price}</Styled.Price>
-            <Styled.Button
-              Added={added}
-              disabled={added}
-              value={value}
-              aria-label="Envia produto"
-              onClick={(event) => {
-                onClick(event);
-                setAdded(true);
-              }}
-            >
-              <ShoppingCart size={32} />
-            </Styled.Button>
           </Styled.Info>
+          <Styled.Button
+            Added={added}
+            disabled={added}
+            value={value}
+            aria-label="Envia produto"
+            onClick={(event) => {
+              onClick(event);
+              setAdded(true);
+            }}
+          >
+            <ShoppingCart size={32} />
+          </Styled.Button>
         </Styled.Card>
       </Styled.Product>
     </Styled.Container>
