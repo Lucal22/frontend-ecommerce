@@ -26,11 +26,7 @@ export default function CartPage() {
       },
     ],
   );
-  const array = [1, 2, 3, 4, 5];
-
-  function handleFilter(id: number) {
-    return id == 1;
-  }
+  const array = [1, 4, 5];
 
   useEffect(() => {
     async function getProducts() {
@@ -43,10 +39,14 @@ export default function CartPage() {
     }
     getProducts();
   }, []);
-  const filtering = products.filter((product) => {
-    return product.id == array[2];
+  const filters = array.map((id: number) => {
+    const filtering = products.filter((product) => {
+      return product.id == id;
+    });
+    return filtering;
   });
-  console.log(filtering);
+
+  console.log(filters);
 
   return (
     <Container display="block" height={'full'}>
