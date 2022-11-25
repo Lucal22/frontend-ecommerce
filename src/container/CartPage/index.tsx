@@ -27,21 +27,26 @@ export default function CartPage() {
     ],
   );
   const array = [1, 2, 3, 4, 5];
+
+  function handleFilter(id: number) {
+    return id == 1;
+  }
+
   useEffect(() => {
-    async function getSomeProducts() {
-      const someProducts = await array.map(async (item) => {
-        try {
-          const productsData: Products = await axios.get(
-            `${api}/getSomeProducts/id${item}`,
-          );
-        } catch (e) {
-          console.error(e);
-        }
-      });
+    async function getProducts() {
+      try {
+        const productsData: Products = await axios.get(`${api}/getProducts`);
+        setProducts(productsData.data);
+      } catch (e) {
+        console.error(e);
+      }
     }
-    getSomeProducts();
+    getProducts();
   }, []);
-  console.log(products);
+  const filtering = products.filter((product) => {
+    return product.id == array[2];
+  });
+  console.log(filtering);
 
   return (
     <Container display="block" height={'full'}>
