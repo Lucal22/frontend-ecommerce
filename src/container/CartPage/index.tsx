@@ -26,23 +26,23 @@ export default function CartPage() {
       },
     ],
   );
-
+  const array = [1, 2, 3, 4, 5];
   useEffect(() => {
-    async function getProducts() {
-      try {
-        const productsData: Products = await axios.get(`${api}/getProducts`, {
-          params: {
-            id: 1,
-          },
-        });
-        setProducts(productsData.data);
-        console.log(productsData.data);
-      } catch (e) {
-        console.error(e);
-      }
+    async function getSomeProducts() {
+      const someProducts = await array.map(async (item) => {
+        try {
+          const productsData: Products = await axios.get(
+            `${api}/getSomeProducts/id${item}`,
+          );
+        } catch (e) {
+          console.error(e);
+        }
+      });
     }
-    getProducts();
+    getSomeProducts();
   }, []);
+  console.log(products);
+
   return (
     <Container display="block" height={'full'}>
       <Styled.Content>
