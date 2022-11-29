@@ -7,20 +7,23 @@ import HomePage from './container/HomePage';
 
 const queryClient = new QueryClient();
 
-function App() {
-  const [cartProducts, setCartProducts] = useState([0]);
-  const [count, setCount] = useState(0);
+const cartStorage = localStorage.getItem('cart');
+const cartObject = cartStorage ? JSON.parse(cartStorage) : null;
+const cartState = cartObject != null ? cartObject : [];
 
-  function handleSelecteds(products: number) {
-    setCartProducts((prevProduct) => {
-      return [...prevProduct, products];
-    });
-    console.log(cartProducts);
-  }
+function App() {
+  const [count, setCount] = useState(0);
 
   function handleCount() {
     setCount(count + 1);
   }
+
+  function handleSelected(products: number) {
+    cartState.push(products);
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cartState));
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -28,7 +31,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomePage onCount={handleCount} onAdd={handleSelecteds} />}
+            element={<HomePage onCount={handleCount} onAdd={handleSelected} />}
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={'PÁGINA NÃO EXISTE'} />
