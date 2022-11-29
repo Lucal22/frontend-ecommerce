@@ -20,3 +20,5 @@ export type Event =
   | React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export type Data = [Product];
+
+export type CartProducts = [Data];

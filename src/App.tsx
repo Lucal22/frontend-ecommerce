@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from 'react-query';
 import Header from './components/Header';
 import CartPage from './container/CartPage';
 import HomePage from './container/HomePage';
+
+const queryClient = new QueryClient();
 
 function App() {
   const [cartProducts, setCartProducts] = useState([0]);
@@ -19,7 +22,7 @@ function App() {
     setCount(count + 1);
   }
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Router>
         <Header number={count} />
         <Routes>
@@ -31,7 +34,7 @@ function App() {
           <Route path="*" element={'PÁGINA NÃO EXISTE'} />
         </Routes>
       </Router>
-    </>
+    </QueryClientProvider>
   );
 }
 

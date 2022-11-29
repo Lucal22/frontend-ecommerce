@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import Container from '../../components/Container';
 import { api } from '../../lib/api';
-import { Data, Products } from '../../type/products';
+import { Product } from '../../type/products';
 import * as Styled from './styles';
 
 export type CartPageProps = {
@@ -10,48 +10,28 @@ export type CartPageProps = {
 };
 
 export default function CartPage() {
-  const [products, setProducts] = useState<Data>(
-    /*productSample,*/
-    [
-      {
-        id: 0,
-        name: '',
-        brand: '',
-        category: '',
-        type: '',
-        description: '',
-        image: '',
-        price: '',
-        qtd: 0,
-      },
-    ],
-  );
+  const { isLoading, data } = useQuery('products', () => {
+    return axios.get(`${api}/getProducts`);
+  });
   const array = [1, 4, 5];
 
-  useEffect(() => {
-    async function getProducts() {
-      try {
-        const productsData: Products = await axios.get(`${api}/getProducts`);
-        setProducts(productsData.data);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    getProducts();
-  }, []);
-  const filters = array.map((id: number) => {
-    const filtering = products.filter((product) => {
+  const filteredProducts = array.map((id: number) => {
+    const filtering = data?.data.filter((product: Product) => {
       return product.id == id;
     });
     return filtering;
   });
 
-  console.log(filters);
-
   return (
     <Container display="block" height={'full'}>
       <Styled.Content>
-        <h1>Olá CartPage</h1>
+        {isLoading ? (
+          <div>Loading</div>
+        ) : (
+          filteredProducts.map((item) => {
+            return <h1 key={item[0].id}>{item[0].id}</h1>;
+          })
+        )}
       </Styled.Content>
     </Container>
   );
