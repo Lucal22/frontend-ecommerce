@@ -143,3 +143,5 @@ export const Button = styled.button<CardStylesProps>`
     ${Added ? ButtonStyles['added'](theme) : null}
   `}
 `;
+
+export const Skeleton = styled.div``;

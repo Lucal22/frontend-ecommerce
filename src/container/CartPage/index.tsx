@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import CartCard from '../../components/CartCard';
 import Container from '../../components/Container';
 import { api } from '../../lib/api';
 import { CartProducts, Product } from '../../type/products';
@@ -27,15 +28,20 @@ export default function CartPage() {
   return (
     <Container display="block" height={'full'}>
       <Styled.Content>
-        {isLoading ? (
-          <div>Loading</div>
-        ) : cartItems.length != 0 ? (
-          filteredProducts.map((item: CartProducts) => {
-            return <h1 key={item[0].id}>{item[0].name}</h1>;
-          })
-        ) : (
-          <h1>Carrinho vazio</h1>
-        )}
+        <Styled.Products>
+          <CartCard />
+        </Styled.Products>
+        <Styled.Price>
+          {isLoading ? (
+            <div>Loading</div>
+          ) : cartItems.length != 0 ? (
+            filteredProducts.map((item: CartProducts) => {
+              return <h1 key={item[0].id}>{item[0].name}</h1>;
+            })
+          ) : (
+            <h1>Carrinho vazio</h1>
+          )}
+        </Styled.Price>
       </Styled.Content>
     </Container>
   );
