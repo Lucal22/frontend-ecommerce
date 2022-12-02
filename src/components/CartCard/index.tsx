@@ -2,13 +2,22 @@ import React from 'react';
 import * as Styled from './styles';
 
 export type CartCardProps = {
-  children: React.ReactNode;
+  src: string;
+  alt: string;
+  name: string;
 };
 
-export default function CartCard() {
+export default function CartCard({ src, alt, name }: CartCardProps) {
   return (
     <Styled.Container>
-      <p>Olá mundo</p>
+      <Styled.Grid>
+        <Styled.Image>
+          <img src={src} alt={alt} />
+        </Styled.Image>
+        <Styled.Description>
+          <h2>{name}</h2>
+        </Styled.Description>
+      </Styled.Grid>
     </Styled.Container>
   );
 }

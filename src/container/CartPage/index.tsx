@@ -28,15 +28,20 @@ export default function CartPage() {
   return (
     <Container display="block" height={'full'}>
       <Styled.Content>
-        <Styled.Products>
-          <CartCard />
-        </Styled.Products>
+        <Styled.Products></Styled.Products>
         <Styled.Price>
           {isLoading ? (
             <div>Loading</div>
           ) : cartItems.length != 0 ? (
             filteredProducts.map((item: CartProducts) => {
-              return <h1 key={item[0].id}>{item[0].name}</h1>;
+              return (
+                <CartCard
+                  key={item[0].id}
+                  name={item[0].name}
+                  src={item[0].image}
+                  alt={item[0].image}
+                />
+              );
             })
           ) : (
             <h1>Carrinho vazio</h1>
