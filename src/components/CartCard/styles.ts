@@ -5,7 +5,7 @@ export const Container = styled.div`
     height: 10rem;
     padding: 1rem 0.5rem;
     background-color: ${theme.background.white};
-    border: 1px solid black;
+    border-bottom: 1px solid black;
   `}
 `;
 

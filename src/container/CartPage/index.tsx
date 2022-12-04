@@ -44,7 +44,9 @@ export default function CartPage() {
               );
             })
           ) : (
-            <h1>Carrinho vazio</h1>
+            <Styled.Empty>
+              <h1>Carrinho vazio</h1>
+            </Styled.Empty>
           )}
         </Styled.Price>
       </Styled.Content>

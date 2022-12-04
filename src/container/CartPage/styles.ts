@@ -11,6 +11,12 @@ export const Content = styled.div`
   `}
 `;
 
+export const Empty = styled.div`
+  h1 {
+    text-align: center;
+  }
+`;
+
 export const Products = styled.div``;
 
 export const Price = styled.div`
