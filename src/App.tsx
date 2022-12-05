@@ -12,7 +12,7 @@ const cartObject = cartStorage ? JSON.parse(cartStorage) : null;
 const cartState = cartObject != null ? cartObject : [];
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(cartObject?.length);
 
   function handleCount() {
     setCount(count + 1);

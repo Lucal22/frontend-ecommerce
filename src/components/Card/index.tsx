@@ -23,6 +23,7 @@ export default function Card({
   onClick,
 }: CardProps) {
   const [added, setAdded] = useState(false);
+
   return (
     <Styled.Container>
       <Styled.Product>
