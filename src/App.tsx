@@ -19,13 +19,7 @@ function App() {
   }
 
   function handleSelected(products: number) {
-    if (cartState.includes(products)) {
-      console.log('item já foi adicionado');
-      return;
-    } else {
-      cartState.push(products);
-    }
-    //cartState.push(products);
+    cartState.push(products);
   }
 
   localStorage.setItem('cart', JSON.stringify(cartState));
